@@ -1,0 +1,96 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/category/category",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/cart/cart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/ucenter/ucenter",
+			"style": {
+				"navigationBarTitleText": "用户中心",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/ucenter/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "超级商城",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"custom": true,
+		"selectedColor": "#1296db",
+		"color": "#707070",
+		"iconfontSrc": "static/fonts/iconfont.ttf",
+		"list": [{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconfont": {
+					"text": "\ue622",
+					"selectedText": "\ue622",
+					"fontSize": "24px",
+					"color": "#707070",
+					"selectedColor": "#1296db"
+				}
+			},
+			{
+				"text": "分类",
+				"pagePath": "pages/category/category",
+				"iconfont": {
+					"text": "\ue60b",
+					"selectedText": "\ue60b",
+					"fontSize": "24px",
+					"color": "#707070",
+					"selectedColor": "#1296db"
+				}
+			},
+			{
+				"text": "购物车",
+				"pagePath": "pages/cart/cart",
+				"iconfont": {
+					"text": "\ue752",
+					"selectedText": "\ue752",
+					"fontSize": "24px",
+					"color": "#707070",
+					"selectedColor": "#1296db"
+				}
+			},
+			{
+				"text": "用户中心",
+				"pagePath": "pages/ucenter/ucenter",
+				"iconfont": {
+					"text": "\ue623",
+					"selectedText": "\ue623",
+					"fontSize": "24px",
+					"color": "#707070",
+					"selectedColor": "#1296db"
+				}
+			}
+		]
+	}
+}
