@@ -5,14 +5,9 @@ import {
 	removeToken
 } from '/utils/auth.js'
 
-let baseUrl
-
-if (process.env.NODE_ENV === 'development') {
-	baseUrl = 'http://192.168.0.10:8080/v1/api'
-}
-if (process.env.NODE_ENV === 'production') {
-	baseUrl = ''
-}
+import {
+	baseUrl
+} from '/config'
 
 const instance = axios.create({
 	baseURL: baseUrl,
@@ -53,7 +48,7 @@ instance.interceptors.response.use(
 				icon: 'error'
 			})
 
-			if (res.code === 2001 || res.code == 2002) {
+			if (res.code === 2001 || res.code === 2002) {
 				uni.showToast({
 					title: res.msg || "登录过期",
 					icon: 'error'
