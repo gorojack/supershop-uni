@@ -10,9 +10,7 @@
 						selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
 						selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
 					}">
-		<image class="banner-holder"
-			src="https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/bi001/2023/0908/180/ias_b6badada2d7eeb5c00ed22483b59e2c1_1135x545_85.jpg"
-			v-if="bannerList.length===0" />
+		<image class="banner-holder" src="/static/icon/image_error.svg" v-if="bannerList.length===0" />
 		<swiper class="swiper-box" @change="change" autoplay circular duration="300" interval="3000"
 			v-if="bannerList.length!==0">
 			<swiper-item v-for="(item, index) in bannerList" :key="index">

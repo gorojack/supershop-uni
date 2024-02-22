@@ -13,6 +13,8 @@
 </script>
 
 <style>
+	@import '/static/css/iconfont.css';
+
 	page {
 		background-color: #fafafa;
 	}

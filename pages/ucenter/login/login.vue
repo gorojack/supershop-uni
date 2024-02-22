@@ -97,7 +97,6 @@
 
 <style lang="less">
 	.login {
-		background-color: #fff;
 		width: 100%;
 		background-position: center;
 		background-size: cover;

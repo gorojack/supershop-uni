@@ -1,5 +1,5 @@
 <template>
-	<view class="goods-item-card">
+	<view class="goods-item-card" @click="goDetail">
 		<image :src="goods.smallImage" mode="aspectFill" />
 		<text class="goods-item-title">{{goods.title}}</text>
 		<text class="goods-item-price" v-if="goods.price">￥{{goods.price.salePrice}}</text>
@@ -16,6 +16,13 @@
 		},
 		data() {
 			return {};
+		},
+		methods: {
+			goDetail() {
+				uni.navigateTo({
+					url: '/pages/goods-detail/goods-detail?productId=' + this.goods.productId
+				})
+			}
 		}
 	}
 </script>
