@@ -118,7 +118,7 @@
 		.cate-box {
 			width: 200rpx;
 			height: 100vh;
-			background-color: #fafafa;
+			background-color: #f8f8f8;
 
 			.item {
 				text-align: center;

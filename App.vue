@@ -13,4 +13,7 @@
 </script>
 
 <style>
+	page {
+		background-color: #fafafa;
+	}
 </style>

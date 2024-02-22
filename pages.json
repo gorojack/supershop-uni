@@ -23,23 +23,29 @@
 			"path": "pages/ucenter/ucenter",
 			"style": {
 				"navigationBarTitleText": "用户中心",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fefefe"
+			}
+		},
+		{
+			"path": "pages/ucenter/login/login",
+			"style": {
+				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/ucenter/login/login",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/ucenter/registration/registration",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/ucenter/registration/registration",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/goods-detail/goods-detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
