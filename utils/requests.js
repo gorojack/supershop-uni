@@ -52,14 +52,13 @@ instance.interceptors.response.use(
 				uni.showToast({
 					title: res.msg || "登录过期",
 					icon: 'error'
-				}).then(() => {
-					removeToken()
-					uni.switchTab({
-						url: '/pages/ucenter/ucenter'
-					})
+				})
+				removeToken()
+				uni.navigateTo({
+					url: '/pages/ucenter/login/login'
 				})
 			}
-			return Promise.reject("服务器错误")
+			return Promise.reject(res.msg || "服务器错误")
 		} else {
 			return res
 		}
