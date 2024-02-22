@@ -32,6 +32,12 @@
 </template>
 
 <script>
+	import {
+		login
+	} from '/api/user'
+	import {
+		setToken
+	} from '/utils/auth'
 	export default {
 		data() {
 			return {
@@ -60,10 +66,18 @@
 					})
 				} else {
 					let data = {
-						phone: this.username,
+						username: this.username,
 						password: this.password
 					}
-					// TODO login
+					login(data).then(resp => {
+						const {
+							data
+						} = resp
+						setToken(data.token)
+						uni.switchTab({
+							url: '/pages/ucenter/ucenter'
+						})
+					})
 				}
 			},
 			registration() {
