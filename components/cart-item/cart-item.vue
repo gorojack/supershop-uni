@@ -2,7 +2,7 @@
 	<view v-if="goods.product">
 		<view class="goods-info">
 			<checkbox-group class="check-box-group" @change="checkBoxChange">
-				<checkbox style="transform: scale(0.7)" value="1" />
+				<checkbox style="transform: scale(0.7)" value="1" :checked="isSelected" />
 			</checkbox-group>
 			<image :src="goods.product.squareImage" />
 			<view class="info-text-box" v-if="goods.product.price">
@@ -31,6 +31,10 @@
 		props: {
 			goods: {
 				type: Object
+			},
+			isSelected: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -58,7 +62,7 @@
 			},
 			checkBoxChange(e) {
 				const value = e.detail.value
-				this.$emit("onItemSelectChange", value == 1, this.goods.skuId)
+				this.$emit("onItemSelectChange", value == 1, this.goods.id)
 			}
 		}
 	}
