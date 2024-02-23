@@ -1,6 +1,6 @@
 <template>
 	<view class="goods-item-card" @click="goDetail">
-		<image :src="goods.smallImage" mode="aspectFill" />
+		<image class="goods-image" :src="goods.smallImage" mode="aspectFill" />
 		<text class="goods-item-title">{{goods.title}}</text>
 		<text class="goods-item-price" v-if="goods.price">￥{{goods.price.salePrice}}</text>
 	</view>
@@ -8,7 +8,7 @@
 
 <script>
 	export default {
-		name: "GoodsItem",
+		name: "goods-item",
 		props: {
 			goods: {
 				type: Object
@@ -33,7 +33,7 @@
 		flex-direction: column;
 		width: 100%;
 
-		text {
+		.goods-item-title {
 			font-weight: bold;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
@@ -43,7 +43,7 @@
 			line-clamp: 2;
 		}
 
-		image {
+		.goods-image {
 			width: 100%;
 			background-color: #fafafa;
 		}

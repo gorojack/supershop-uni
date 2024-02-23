@@ -18,4 +18,8 @@
 	page {
 		background-color: #fafafa;
 	}
+
+	button {
+		background-color: #007aff;
+	}
 </style>

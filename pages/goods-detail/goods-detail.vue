@@ -172,7 +172,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.divider {
 		background: #E0E3DA;
 		width: 90%;

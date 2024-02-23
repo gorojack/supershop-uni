@@ -7,3 +7,10 @@ export function addCart(data) {
 		data
 	})
 }
+
+export function getCart() {
+	return request({
+		url: '/cart/list',
+		method: 'get'
+	})
+}
