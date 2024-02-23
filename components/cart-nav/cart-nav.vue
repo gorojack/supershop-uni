@@ -7,6 +7,10 @@
 				</checkbox-group>
 			</template>
 			<template v-slot:footer>
+				<view class="total-price">
+					<text class="label-text">总价</text>
+					<text class="price-text">￥{{parseFloat(totalPrice).toFixed(2)}}</text>
+				</view>
 				<button class="btn-buy" type="primary" size="mini" @click="btnClick">立即购买</button>
 			</template>
 		</uni-list-item>
@@ -20,6 +24,10 @@
 			selectedAll: {
 				type: Boolean,
 				default: false
+			},
+			totalPrice: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
@@ -43,6 +51,22 @@
 		width: 100%;
 		background-color: #fefefe;
 		border-radius: 24rpx 0 0 24rpx;
+
+		.total-price {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-right: 20rpx;
+
+			.label-text {
+				font-size: 24rpx;
+			}
+
+			.price-text {
+				font-size: 32rpx;
+				color: #3782ff;
+			}
+		}
 
 		.btn-buy {
 			width: 180rpx;

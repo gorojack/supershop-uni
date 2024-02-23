@@ -14,7 +14,8 @@
 		</view>
 	</view>
 	<view class="goods-carts" :key="new Date().getTime()">
-		<cart-nav @selectAll="selectAll" :selectedAll="isSelectedAll" @navButtonClick="buyNow"></cart-nav>
+		<cart-nav @selectAll="selectAll" :selectedAll="isSelectedAll" :totalPrice="totalPrice"
+			@navButtonClick="buyNow"></cart-nav>
 	</view>
 </template>
 
@@ -26,7 +27,7 @@
 		data() {
 			return {
 				page: 1,
-				cartMap: {},
+				cartMap: new Map(),
 				selectedIds: new Set(),
 				allIds: [],
 				isSelectedAll: false
@@ -43,7 +44,19 @@
 				title: '加载中'
 			})
 		},
-		computed: {},
+		computed: {
+			totalPrice() {
+				let price = 0
+				this.cartMap.forEach((value, key) => {
+					value.forEach(item => {
+						if (this.selectedIds.has(item.id)) {
+							price += Number(item.product.price.salePrice)
+						}
+					})
+				})
+				return price
+			}
+		},
 		methods: {
 			async fetchData() {
 				let promises = []
