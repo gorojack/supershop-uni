@@ -60,10 +60,17 @@
 		"custom": true,
 		"selectedColor": "#1296db",
 		"color": "#707070",
+		// #ifndef MP-WEIXIN
 		"iconfontSrc": "static/fonts/iconfont.ttf",
+		// #endif
 		"list": [{
 				"text": "首页",
 				"pagePath": "pages/index/index",
+				// #ifdef MP-WEIXIN
+				"iconPath": "/static/icon/home.png",
+				"selectedIconPath": "/static/icon/home-selected.png",
+				// #endif
+				// #ifndef MP-WEIXIN
 				"iconfont": {
 					"text": "\ue622",
 					"selectedText": "\ue622",
@@ -71,10 +78,16 @@
 					"color": "#707070",
 					"selectedColor": "#1296db"
 				}
+				// #endif
 			},
 			{
 				"text": "分类",
 				"pagePath": "pages/category/category",
+				// #ifdef MP-WEIXIN
+				"iconPath": "/static/icon/category.png",
+				"selectedIconPath": "/static/icon/category-selected.png",
+				// #endif
+				// #ifndef MP-WEIXIN
 				"iconfont": {
 					"text": "\ue60b",
 					"selectedText": "\ue60b",
@@ -82,10 +95,16 @@
 					"color": "#707070",
 					"selectedColor": "#1296db"
 				}
+				// #endif
 			},
 			{
 				"text": "购物车",
 				"pagePath": "pages/cart/cart",
+				// #ifdef MP-WEIXIN
+				"iconPath": "/static/icon/cart.png",
+				"selectedIconPath": "/static/icon/cart-selected.png",
+				// #endif
+				// #ifndef MP-WEIXIN
 				"iconfont": {
 					"text": "\ue752",
 					"selectedText": "\ue752",
@@ -93,10 +112,16 @@
 					"color": "#707070",
 					"selectedColor": "#1296db"
 				}
+				// #endif
 			},
 			{
 				"text": "用户中心",
 				"pagePath": "pages/ucenter/ucenter",
+				// #ifdef MP-WEIXIN
+				"iconPath": "/static/icon/ucenter.png",
+				"selectedIconPath": "/static/icon/ucenter-selected.png",
+				// #endif
+				// #ifndef MP-WEIXIN
 				"iconfont": {
 					"text": "\ue623",
 					"selectedText": "\ue623",
@@ -104,6 +129,7 @@
 					"color": "#707070",
 					"selectedColor": "#1296db"
 				}
+				// #endif
 			}
 		]
 	}
