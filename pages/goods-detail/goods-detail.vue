@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="content">
 		<view>
 			<uni-swiper-dot :info="goodsInfo.previewImages" v-if="goodsInfo.previewImages" :current="current" field="content">
 				<image class="image-holder" src="/static/icon/image_error.svg" v-if="goodsInfo.previewImages.length===0" />
@@ -47,11 +47,10 @@
 			</uni-section>
 		</view>
 		<view class="divider"></view>
-
-		<view class="goods-carts">
-			<uni-goods-nav :options="options" :fill="true" :button-group="buttonGroup" @click="onClick"
-				@buttonClick="buttonClick" />
-		</view>
+	</view>
+	<view class="goods-carts">
+		<uni-goods-nav :options="options" :fill="true" :button-group="buttonGroup" @click="onClick"
+			@buttonClick="buttonClick" />
 	</view>
 </template>
 
@@ -173,6 +172,10 @@
 </script>
 
 <style lang="scss">
+	.content {
+		padding-bottom: 50px;
+	}
+
 	.divider {
 		background: #E0E3DA;
 		width: 90%;

@@ -29,7 +29,7 @@
 				cartMap: {},
 			}
 		},
-		onLoad() {
+		onShow() {
 			this.fetchData()
 		},
 		onPullDownRefresh() {
