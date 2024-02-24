@@ -26,6 +26,9 @@
 </template>
 
 <script>
+	import {
+		updateNumber
+	} from '/api/cart'
 	export default {
 		name: "cart-item",
 		props: {
@@ -54,11 +57,13 @@
 					}
 					this.goods.number = this.goods.number - 1
 				}
+				updateNumber(this.goods)
 			},
 			checkNumber() {
 				if (this.goods.number <= 0) {
 					this.goods.number = 1
 				}
+				updateNumber(this.goods)
 			},
 			checkBoxChange(e) {
 				const value = e.detail.value

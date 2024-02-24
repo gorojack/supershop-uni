@@ -14,3 +14,11 @@ export function getCart() {
 		method: 'get'
 	})
 }
+
+export function updateNumber(data) {
+	return request({
+		url: '/cart/updateNumber',
+		method: 'post',
+		data
+	})
+}
