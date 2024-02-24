@@ -50,7 +50,7 @@
 				this.cartMap.forEach((value, key) => {
 					value.forEach(item => {
 						if (this.selectedIds.has(item.id)) {
-							price += Number(item.product.price.salePrice)
+							price += Number(item.product.price.salePrice * item.number)
 						}
 					})
 				})
