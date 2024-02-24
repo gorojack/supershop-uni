@@ -15,7 +15,7 @@
 		{
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "购物车",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": true
 			}
 		},

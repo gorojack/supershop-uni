@@ -7,11 +7,12 @@
 				</checkbox-group>
 			</template>
 			<template v-slot:footer>
-				<view class="total-price">
+				<view class="total-price" v-if="!manageMode">
 					<text class="label-text">总价</text>
 					<text class="price-text">￥{{parseFloat(totalPrice).toFixed(2)}}</text>
 				</view>
-				<button class="btn-buy" type="primary" size="mini" @click="btnClick">立即购买</button>
+				<button class="btn-buy" :type="manageMode?'warn':'primary'" size="mini"
+					@click="btnClick">{{manageMode?'删除':'立即购买'}}</button>
 			</template>
 		</uni-list-item>
 	</view>
@@ -28,6 +29,10 @@
 			totalPrice: {
 				type: Number,
 				default: 0
+			},
+			manageMode: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {

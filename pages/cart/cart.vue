@@ -1,4 +1,14 @@
 <template>
+	<view>
+		<uni-nav-bar class="nav-bar" status-bar="true" title="购物车">
+			<block v-slot:left>
+				<view>
+					<button class="nav-left-btn" :type="manageMode?'warn':'primary'" size="mini"
+						@click="switchMode">{{manageMode?'退出':'管理'}}</button>
+				</view>
+			</block>
+		</uni-nav-bar>
+	</view>
 	<view class="content">
 		<view class="brand-cate" v-for="(value,key) in cartMap" :key="key">
 			<view class="brand-info">
@@ -14,14 +24,15 @@
 		</view>
 	</view>
 	<view class="goods-carts" :key="new Date().getTime()">
-		<cart-nav @selectAll="selectAll" :selectedAll="isSelectedAll" :totalPrice="totalPrice"
-			@navButtonClick="buyNow"></cart-nav>
+		<cart-nav @selectAll="selectAll" :selectedAll="isSelectedAll" :totalPrice="totalPrice" :manageMode="manageMode"
+			@navButtonClick="onNavButtonClick"></cart-nav>
 	</view>
 </template>
 
 <script>
 	import {
-		getCart
+		getCart,
+		deleteCart
 	} from '/api/cart'
 	export default {
 		data() {
@@ -30,7 +41,8 @@
 				cartMap: new Map(),
 				selectedIds: new Set(),
 				allIds: [],
-				isSelectedAll: false
+				isSelectedAll: false,
+				manageMode: false
 			}
 		},
 		onShow() {
@@ -84,6 +96,7 @@
 					uni.hideLoading()
 					uni.stopPullDownRefresh()
 				}, 200)
+				this.manageMode = false
 			},
 			selectAll(isSelectAll) {
 				if (isSelectAll) {
@@ -111,8 +124,33 @@
 				})
 				this.checkSelectAll()
 			},
-			buyNow() {
-				console.log('buy now')
+			onNavButtonClick() {
+				if (this.manageMode) {
+					if (this.selectedIds.size == 0) {
+						uni.showToast({
+							title: '未选择任何商品',
+							icon: 'error'
+						})
+						return
+					}
+					uni.showModal({
+						title: '提示',
+						content: `确定要删除${this.selectedIds.size}个商品吗`,
+						success: (res) => {
+							if (res.confirm) {
+								deleteCart(Array.from(this.selectedIds)).then(resp => {
+									uni.showToast({
+										title: resp.msg
+									})
+									this.fetchData()
+									this.selectAll(false)
+								})
+							}
+						}
+					})
+				} else {
+					// TODO create order
+				}
 			},
 			itemSelectChange(selected, id) {
 				if (selected) {
@@ -138,6 +176,9 @@
 			},
 			checkSelectAll() {
 				this.isSelectedAll = this.allIds.every(item => this.selectedIds.has(item))
+			},
+			switchMode() {
+				this.manageMode = !this.manageMode
 			}
 		}
 	}
@@ -170,5 +211,10 @@
 		right: 0;
 		bottom: var(--window-bottom, 0);
 		z-index: 99;
+	}
+
+	.nav-left-btn {
+		width: 130rpx;
+		line-height: 60rpx;
 	}
 </style>

@@ -22,3 +22,11 @@ export function updateNumber(data) {
 		data
 	})
 }
+
+export function deleteCart(data) {
+	return request({
+		url: '/cart/delete',
+		method: 'post',
+		data
+	})
+}
