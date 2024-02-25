@@ -47,6 +47,20 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/ucenter/address/address",
+			"style": {
+				"navigationBarTitleText": "我的收货地址",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/ucenter/address/new-address/new-address",
+			"style": {
+				"navigationBarTitleText": "添加新地址",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"globalStyle": {

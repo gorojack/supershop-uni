@@ -37,7 +37,7 @@
 	<view class="divider" />
 	<view class="settings">
 		<uni-list>
-			<uni-list-item class="list-item" showArrow clickable title="地址管理" @click="goLocation">
+			<uni-list-item class="list-item" showArrow clickable title="地址管理" @click="goAddress">
 				<template v-slot:header>
 					<image src="/static/icon/location.svg" />
 				</template>
@@ -88,8 +88,10 @@
 			goOrder(type) {
 				// TODO goOrder
 			},
-			goLocation() {
-				// TODO goLocation
+			goAddress() {
+				uni.navigateTo({
+					url: '/pages/ucenter/address/address'
+				})
 			},
 			goAbout() {
 				// TODO goAbout
