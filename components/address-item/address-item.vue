@@ -32,7 +32,12 @@
 		},
 		methods: {
 			edit() {
-				console.log('edit')
+				uni.navigateTo({
+					url: '/pages/ucenter/address/new-address/new-address',
+					success: (res) => {
+						res.eventChannel.emit('acceptAddress', this.address)
+					}
+				})
 			}
 		}
 	}

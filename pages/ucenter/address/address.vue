@@ -25,6 +25,9 @@
 		onLoad() {
 			this.fetchData()
 		},
+		onShow() {
+			this.fetchData()
+		},
 		onPullDownRefresh() {
 			this.fetchData()
 			uni.showLoading({

@@ -81,6 +81,12 @@
 		},
 		onLoad() {
 			this.localData = this.get_city_tree()
+			const channel = this.getOpenerEventChannel()
+			channel.on('acceptAddress', (data) => {
+				this.addressFormData = data
+				this.addressFormData.cityCode = data.cityCode.toString()
+				this.addressFormData.isDefaults = data.isDefault == 1 ? [1] : []
+			})
 		},
 		methods: {
 			saveAddress() {
@@ -93,6 +99,7 @@
 						uni.navigateBack()
 					})
 				}).catch(err => {
+					console.log(err)
 					return
 				})
 			},
