@@ -25,6 +25,7 @@
 		</uni-section>
 	</view>
 	<view class="bottom-box">
+		<button class="btn-save" type="warn" @click="delAddress" v-if="showDelete">删除</button>
 		<button class="btn-save" type="primary" @click="saveAddress">保存</button>
 	</view>
 </template>
@@ -32,11 +33,13 @@
 <script>
 	import cityRows from '@/static/city_data.json'
 	import {
-		addAddress
+		addAddress,
+		deleteAddress
 	} from '/api/address'
 	export default {
 		data() {
 			return {
+				showDelete: false,
 				localData: [],
 				addressFormData: {
 					isDefaults: []
@@ -86,9 +89,26 @@
 				this.addressFormData = data
 				this.addressFormData.cityCode = data.cityCode.toString()
 				this.addressFormData.isDefaults = data.isDefault == 1 ? [1] : []
+				this.showDelete = true
 			})
 		},
 		methods: {
+			delAddress() {
+				uni.showModal({
+					title: '提示',
+					content: '确定要删除该地址吗',
+					success: (res) => {
+						if (res.confirm) {
+							deleteAddress(this.addressFormData).then(resp => {
+								uni.showToast({
+									title: resp.msg
+								})
+								uni.navigateBack()
+							})
+						}
+					}
+				})
+			},
 			saveAddress() {
 				this.$refs.addressForm.validate().then(res => {
 					this.addressFormData.isDefault = this.addressFormData.isDefaults.length
@@ -161,10 +181,16 @@
 		left: 0;
 		right: 0;
 		background-color: #fefefe;
+		display: flex;
 
 		.btn-save {
 			margin: 20rpx;
 			border-radius: 45rpx;
+			min-width: 200rpx;
+		}
+
+		.btn-save:last-child {
+			flex: auto;
 		}
 	}
 </style>

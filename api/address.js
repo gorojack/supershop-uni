@@ -14,3 +14,11 @@ export function addAddress(data) {
 		data
 	})
 }
+
+export function deleteAddress(data) {
+	return request({
+		url: '/address/delete',
+		method: 'post',
+		data
+	})
+}

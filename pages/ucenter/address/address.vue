@@ -6,7 +6,6 @@
 			</view>
 		</view>
 		<view class="bottom-box">
-			<button class="btn" type="warn">管理</button>
 			<button class="btn btn-save" type="primary" @click="addNewAddress">添加收货地址</button>
 		</view>
 	</view>
