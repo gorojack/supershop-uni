@@ -149,7 +149,12 @@
 						}
 					})
 				} else {
-					// TODO create order
+					uni.navigateTo({
+						url: '/pages/order/create-order/create-order',
+						success: (res) => {
+							res.eventChannel.emit('acceptCartIds', Array.from(this.selectedIds))
+						}
+					})
 				}
 			},
 			itemSelectChange(selected, id) {

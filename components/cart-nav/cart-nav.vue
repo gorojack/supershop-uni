@@ -2,7 +2,7 @@
 	<view class="cart-nav">
 		<uni-list-item>
 			<template v-slot:header>
-				<checkbox-group @change="checkBoxChange">
+				<checkbox-group v-if="showCheck" @change="checkBoxChange">
 					<checkbox style="transform: scale(0.8)" value="1" :checked="selectedAll">全选</checkbox>
 				</checkbox-group>
 			</template>
@@ -12,7 +12,7 @@
 					<text class="price-text">￥{{parseFloat(totalPrice).toFixed(2)}}</text>
 				</view>
 				<button class="btn-buy" :type="manageMode?'warn':'primary'" size="mini"
-					@click="btnClick">{{manageMode?'删除':'立即购买'}}</button>
+					@click="btnClick">{{manageMode?'删除':buttonText}}</button>
 			</template>
 		</uni-list-item>
 	</view>
@@ -33,6 +33,14 @@
 			manageMode: {
 				type: Boolean,
 				default: false
+			},
+			showCheck: {
+				type: Boolean,
+				default: true
+			},
+			buttonText: {
+				type: String,
+				default: '立即购买'
 			}
 		},
 		data() {

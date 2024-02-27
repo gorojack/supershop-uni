@@ -1,7 +1,7 @@
 <template>
 	<view v-if="goods.product">
 		<view class="goods-info">
-			<checkbox-group class="check-box-group" @change="checkBoxChange">
+			<checkbox-group v-if="showCheck" class="check-box-group" @change="checkBoxChange">
 				<checkbox style="transform: scale(0.7)" value="1" :checked="isSelected" />
 			</checkbox-group>
 			<image :src="goods.product.squareImage" />
@@ -38,6 +38,10 @@
 			isSelected: {
 				type: Boolean,
 				default: false
+			},
+			showCheck: {
+				type: Boolean,
+				default: true
 			}
 		},
 		data() {
