@@ -15,3 +15,18 @@ export function createOrder(data) {
 		data
 	})
 }
+
+export function listOrder(params) {
+	return request({
+		url: '/order/list',
+		method: 'get',
+		params
+	})
+}
+
+export function getAllStatus() {
+	return request({
+		url: '/order/status',
+		method: 'get'
+	})
+}

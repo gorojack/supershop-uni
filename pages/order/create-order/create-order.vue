@@ -52,6 +52,9 @@
 				})
 			})
 		},
+		onUnload() {
+			uni.hideLoading()
+		},
 		computed: {
 			totalPrice() {
 				let price = 0
@@ -69,7 +72,21 @@
 				// TODO choose other address
 			},
 			onNavButtonClick() {
-				// TODO submit order
+				let data = {}
+				Object.assign(data, this.orderConfirm)
+				data.brands = Object.fromEntries(this.orderConfirm.brands)
+				createOrder(data).then(resp => {
+					const {
+						data
+					} = resp
+					uni.showToast({
+						title: resp.msg,
+						icon: 'success'
+					})
+					uni.switchTab({
+						url: '/pages/cart/cart'
+					})
+				})
 			},
 			btnCommentClick() {
 				// TODO comment
@@ -81,6 +98,7 @@
 <style lang="scss">
 	.content {
 		padding: 20rpx;
+		padding-bottom: 120rpx;
 
 		.address-box {
 			background-color: #ffffff;

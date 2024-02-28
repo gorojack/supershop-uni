@@ -14,19 +14,19 @@
 			<view class="divider" />
 			<view class="order-info-list">
 				<view @click="goOrder(1)">
-					<uni-badge class="order-info-item" text="2" absolute="rightTop" :offset="badgeOffset">
+					<uni-badge class="order-info-item" :text="orderStatus.unPaid" absolute="rightTop" :offset="badgeOffset">
 						<image src="/static/icon/pay.svg" />
 						<text>待支付</text>
 					</uni-badge>
 				</view>
 				<view @click="goOrder(2)">
-					<uni-badge class="order-info-item" text="2" absolute="rightTop" :offset="badgeOffset">
+					<uni-badge class="order-info-item" :text="orderStatus.waitSend" absolute="rightTop" :offset="badgeOffset">
 						<image src="/static/icon/send.svg" />
 						<text>待发货</text>
 					</uni-badge>
 				</view>
 				<view @click="goOrder(3)">
-					<uni-badge class="order-info-item" text="2" absolute="rightTop" :offset="badgeOffset">
+					<uni-badge class="order-info-item" :text="orderStatus.waitSign" absolute="rightTop" :offset="badgeOffset">
 						<image src="/static/icon/no_signed.svg" />
 						<text>待签收</text>
 					</uni-badge>
@@ -58,9 +58,13 @@
 	import {
 		getToken
 	} from '/utils/auth'
+	import {
+		getAllStatus
+	} from '/api/order'
 	export default {
 		data() {
 			return {
+				orderStatus: {},
 				userInfo: {},
 				badgeOffset: [6, 2]
 			}
@@ -79,6 +83,12 @@
 					this.userInfo = data
 					localStorage.setItem('currentUser', data)
 				})
+				getAllStatus().then(resp => {
+					const {
+						data
+					} = resp
+					this.orderStatus = data
+				})
 			},
 			goLogin() {
 				uni.navigateTo({
@@ -86,7 +96,9 @@
 				})
 			},
 			goOrder(type) {
-				// TODO goOrder
+				uni.navigateTo({
+					url: `/pages/order/order?type=${type}`
+				})
 			},
 			goAddress() {
 				uni.navigateTo({
