@@ -63,19 +63,24 @@
 			}
 		},
 		{
-			"path" : "pages/order/order",
-			"style" : 
-			{
-				"navigationBarTitleText" : "订单管理",
-				"enablePullDownRefresh" : true
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单管理",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
-			"path" : "pages/order/create-order/create-order",
-			"style" : 
-			{
-				"navigationBarTitleText" : "创建订单",
-				"enablePullDownRefresh" : false
+			"path": "pages/order/create-order/create-order",
+			"style": {
+				"navigationBarTitleText": "创建订单",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/ucenter/profile/profile",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
 			}
 		}
 	],

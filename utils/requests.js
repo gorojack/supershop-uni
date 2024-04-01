@@ -54,9 +54,6 @@ instance.interceptors.response.use(
 					icon: 'error'
 				})
 				removeToken()
-				uni.navigateTo({
-					url: '/pages/ucenter/login/login'
-				})
 			}
 			return Promise.reject(res.msg || "服务器错误")
 		} else {

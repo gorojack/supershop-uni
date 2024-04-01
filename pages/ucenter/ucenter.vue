@@ -1,7 +1,7 @@
 <template>
 	<view class="user-info" @click="goLogin">
-		<image :src="userInfo?userInfo.avatar:'/static/icon/default_avatar.svg'" />
-		<text>{{userInfo?userInfo.nickname:'点击登录'}}</text>
+		<image :src="userInfo.avatar?userInfo.avatar:'/static/icon/default_avatar.svg'" />
+		<text>{{userInfo.nickname?userInfo.nickname:'点击登录'}}</text>
 		<uni-icons class="right-arrow" type="right" style="color:#8f8f8f" />
 	</view>
 	<view class="divider" />
@@ -91,9 +91,15 @@
 				})
 			},
 			goLogin() {
-				uni.navigateTo({
-					url: '/pages/ucenter/login/login'
-				})
+				if (this.userInfo.nickname) {
+					uni.navigateTo({
+						url: '/pages/ucenter/profile/profile'
+					})
+				} else {
+					uni.navigateTo({
+						url: '/pages/ucenter/login/login'
+					})
+				}
 			},
 			goOrder(type) {
 				uni.navigateTo({

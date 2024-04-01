@@ -15,6 +15,7 @@ export function getProductByNdCategoryId(params) {
 		params
 	})
 }
+
 export function getProductInfo(params) {
 	return request({
 		url: '/product/info',
