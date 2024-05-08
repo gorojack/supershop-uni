@@ -23,3 +23,11 @@ export function getProductInfo(params) {
 		params
 	})
 }
+
+export function searchProduct(params) {
+	return request({
+		url: '/product/search',
+		method: 'get',
+		params
+	})
+}

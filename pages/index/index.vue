@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-search-bar @confirm="search" placeholder="搜索">
+		<uni-search-bar @confirm="search" v-model="searchValue" placeholder="搜索">
 		</uni-search-bar>
 	</view>
 	<uni-swiper-dot :info="bannerList" :current="current" field="content" mode="round" :dots-styles="{
@@ -51,7 +51,8 @@
 				current: 0,
 				recommendCategories: [],
 				recommendGoods: [],
-				isLoading: false
+				isLoading: false,
+				searchValue: ''
 			}
 		},
 		onLoad() {
@@ -102,18 +103,23 @@
 				await Promise.allSettled(promises)
 				uni.stopPullDownRefresh()
 			},
-			search() {},
+			search() {
+				uni.navigateTo({
+					url: '/pages/index/search/search?value=' + this.searchValue
+				})
+			},
 			change(e) {
 				this.current = e.detail.current;
 			},
 			bannerClickHandle(e) {
-				uni.showToast({
-					title: e.title,
-					icon: 'none',
-					bottom: 'bottom'
+				uni.navigateTo({
+					url: e.navUrl
 				})
 			},
 			recommendClickHandle(e) {
+				uni.reLaunch({
+					url: e.navUrl
+				})
 				uni.showToast({
 					title: e.title,
 					icon: 'none',

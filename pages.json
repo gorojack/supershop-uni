@@ -82,6 +82,14 @@
 				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/index/search/search",
+			"style" : 
+			{
+				"navigationBarTitleText" : "搜索",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {

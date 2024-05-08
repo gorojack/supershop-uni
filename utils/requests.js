@@ -5,9 +5,9 @@ import {
 	removeToken
 } from '/utils/auth.js'
 
-import {
-	baseUrl
-} from '/config'
+const baseUrl = process.env.NODE_ENV === 'development' ?
+	'http://localhost:8080/v1/api' :
+	'/v1/api'
 
 const instance = axios.create({
 	baseURL: baseUrl,

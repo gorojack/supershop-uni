@@ -31,7 +31,6 @@
 		data() {
 			return {
 				categoryList: [],
-				scrollTop: 0,
 				currentCategoryId: 0,
 				currentPage: 1,
 				goodsList: [],
@@ -39,7 +38,8 @@
 				total: 0
 			};
 		},
-		onLoad() {
+		onLoad(option) {
+			this.currentCategoryId = option.cate
 			this.fetchData()
 		},
 		methods: {
@@ -49,7 +49,9 @@
 						data
 					} = resp
 					this.categoryList = data || []
-					this.switchCate(this.categoryList[0])
+					this.switchCate({
+						categoryId: this.currentCategoryId
+					})
 				})
 			},
 			loadLoadMore() {
@@ -84,7 +86,11 @@
 				})
 			},
 			switchCate(e) {
-				this.currentCategoryId = e.categoryId
+				if (null == e.categoryId || undefined == e.categoryId) {
+					this.currentCategoryId = this.categoryList[0].categoryId
+				} else {
+					this.currentCategoryId = e.categoryId
+				}
 				this.goodsList = []
 				this.isLoading = true
 				uni.showLoading({
